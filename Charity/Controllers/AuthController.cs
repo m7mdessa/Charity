@@ -34,7 +34,7 @@ namespace Charity.API.Controllers
 
 		public IActionResult Login([FromBody] Login login)
 		{
-            var token = authService.Login(login );
+            var token = authService.Login(login);
             if (token == null)
             {
                 return Unauthorized();

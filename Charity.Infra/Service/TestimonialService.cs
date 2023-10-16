@@ -9,34 +9,34 @@ namespace Charity.Infra.Service
 
 	public class TestimonialService : ITestimonialService
 	{
-		private readonly ITestimonialRepository testimonialRepository;
+		private readonly ITestimonialRepository _testimonialRepository;
 		public TestimonialService(ITestimonialRepository testimonialRepository)
 		{
-			this.testimonialRepository = testimonialRepository;
+			_testimonialRepository = testimonialRepository;
 		}
 		public List<Testimonials> GetAllTestimonials()
 		{
-			return testimonialRepository.GetAllTestimonials();
+			return _testimonialRepository.GetAllTestimonials();
 		}
 		public void CreateTestimonial(CharityTestimonial testimonial)
 		{
-			testimonialRepository.CreateTestimonial(testimonial);
+            _testimonialRepository.CreateTestimonial(testimonial);
 		}
 		public void DeleteTestimonial(int id)
 		{
-			testimonialRepository.DeleteTestimonial(id);
+            _testimonialRepository.DeleteTestimonial(id);
 		}
 		public void UpdateTestimonial(CharityTestimonial testimonial)
 		{
-			testimonialRepository.UpdateTestimonial(testimonial);
+            _testimonialRepository.UpdateTestimonial(testimonial);
 		}
 		public CharityTestimonial GetTestimonialById(int id)
 		{
-			return testimonialRepository.GetTestimonialById(id);
+			return _testimonialRepository.GetTestimonialById(id);
 		}
-        public List<Testimonials> GetTestimonialByUserId(int user_id)
+        public List<Testimonials> GetTestimonialByUserId(int userId)
         {
-            return testimonialRepository.GetTestimonialByUserId(user_id);
+            return _testimonialRepository.GetTestimonialByUserId(userId);
         }
 
     }

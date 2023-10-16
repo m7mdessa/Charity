@@ -11,52 +11,53 @@ namespace Charity.API.Controllers
 	
 	public class TestimonialController : Controller
 	{
-		private readonly ITestimonialService TestimonialService;
+		private readonly ITestimonialService _testimonialService;
 
-		public TestimonialController(ITestimonialService TestimonialService)
+		public TestimonialController(ITestimonialService testimonialService)
 		{
-			this.TestimonialService = TestimonialService;
+			_testimonialService = testimonialService;
 
 		}
 
 		[HttpGet]
 		public List<Testimonials> GetAllTestimonials()
 		{
-			return TestimonialService.GetAllTestimonials();
+			return _testimonialService.GetAllTestimonials();
 		}
+
         [HttpGet]
-        [Route("GetTestimonialByUserId/{user_id}")]
-        public List<Testimonials> GetTestimonialByUserId(int user_id)
+        [Route("GetTestimonialByUserId/{userId}")]
+        public List<Testimonials> GetTestimonialByUserId(int userId)
         {
-            return TestimonialService.GetTestimonialByUserId(user_id);
+            return _testimonialService.GetTestimonialByUserId(userId);
         }
 
 
         [HttpPost]
-		public void CreateTestimonial(CharityTestimonial Testimonial)
+		public void CreateTestimonial(CharityTestimonial testimonial)
 		{
-			TestimonialService.CreateTestimonial(Testimonial);
+            _testimonialService.CreateTestimonial(testimonial);
 		}
 
 		[HttpDelete]
 		[Route("Delete/{id}")]
 		public void DeleteTestimonial(int id)
 		{
-			TestimonialService.DeleteTestimonial(id);
+            _testimonialService.DeleteTestimonial(id);
 		}
 
 		[HttpGet]
 		[Route("GetTestimonialById/{id}")]
 		public CharityTestimonial GetTestimonialById(int id)
 		{
-			return TestimonialService.GetTestimonialById(id);
+			return _testimonialService.GetTestimonialById(id);
 		}
 
 
 		[HttpPut]
-		public void UpdateTestimonial(CharityTestimonial Testimonial)
+		public void UpdateTestimonial(CharityTestimonial testimonial)
 		{
-			TestimonialService.UpdateTestimonial(Testimonial);
+            _testimonialService.UpdateTestimonial(testimonial);
 		
 		}
 

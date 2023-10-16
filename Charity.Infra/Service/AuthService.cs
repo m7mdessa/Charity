@@ -27,48 +27,75 @@ namespace Charity.Infra.Service
 		{
 			authRepository.Resetpassword(reset);
 		}
-		public string Login(Login login)
-		{
-			var result = authRepository.Login(login);
+        public string Login(Login login)
+        {
+            var result = authRepository.Login(login);
+            if (result == null)
+            {
+                return null;
+            }
+            else
+            {
+                var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is my custom Secret key for authentication"));
+                var signinCredentials = new SigningCredentials(secretKey,SecurityAlgorithms.HmacSha256);
+                var claims = new List<Claim>
+                   {
+    	          new  Claim ("Name", result.Username),
+                	new Claim("Role", result.Roleid.ToString()),
+                	new Claim("UserId", result.id.ToString())
+                   };
+                var tokeOptions = new JwtSecurityToken(
+                claims: claims,
+                expires:DateTime.Now.AddHours(24),
+                signingCredentials: signinCredentials
+                 );
+                var tokenString = new
+               JwtSecurityTokenHandler().WriteToken(tokeOptions);
+                return tokenString;
+            }
+        }
+        //              public string Login(Login login)
+        //{
+        //	var result = authRepository.Login(login);
 
-			if (result == null)
-			{
-				return null;
-			}
-			else
-			{
-				// Generate a 256-bit key for HMAC SHA-256
-				byte[] keyBytes = new byte[32]; // 256 bits
-				using (var rng = new RNGCryptoServiceProvider())
-				{
-					rng.GetBytes(keyBytes);
-				}
+        //	if (result == null)
+        //	{
+        //		return null;
+        //	}
+        //	else
+        //	{
+        //		// Generate a 256-bit key for HMAC SHA-256
+        //		byte[] keyBytes = new byte[32]; // 256 bits
+        //		using (var rng = new RNGCryptoServiceProvider())
+        //		{
+        //			rng.GetBytes(keyBytes);
+        //		}
 
-				var secretKey = new SymmetricSecurityKey(keyBytes);
-				var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-				var claims = new List<Claim>
-		{
-			new Claim("Name", result.Username),
-			new Claim("Role", result.Roleid.ToString()),
-			new Claim("UserId", result.id.ToString())
-		};
-				var tokenOptions = new JwtSecurityToken(
-					claims: claims,
-					expires: DateTime.Now.AddHours(24),
-					signingCredentials: signinCredentials
-				);
+        //		var secretKey = new SymmetricSecurityKey(keyBytes);
+        //		var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+        //		var claims = new List<Claim>
+        //{
+        //	new Claim("Name", result.Username),
+        //	new Claim("Role", result.Roleid.ToString()),
+        //	new Claim("UserId", result.id.ToString())
+        //};
+        //		var tokenOptions = new JwtSecurityToken(
+        //			claims: claims,
+        //			expires: DateTime.Now.AddHours(24),
+        //			signingCredentials: signinCredentials
+        //		);
 
-				var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
-				return tokenString;
-			}
-		}
+        //		var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+        //		return tokenString;
+        //	}
+        //}
 
-		public void Register(Register register)
+        public void Register(Register register)
 		{
 			authRepository.Register(register);
 		}
 
-		
-	}
+       
+    }
 }
 

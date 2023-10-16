@@ -10,7 +10,7 @@ namespace Charity.Core.Repository
 		void DeleteTestimonial(int id);
 		public void UpdateTestimonial(CharityTestimonial testimonial);
 		CharityTestimonial GetTestimonialById(int id);
-        public List<Testimonials> GetTestimonialByUserId(int user_id);
+        public List<Testimonials> GetTestimonialByUserId(int userId);
 
     }
 }
