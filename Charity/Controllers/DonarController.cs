@@ -38,6 +38,12 @@ namespace Charity.API.Controllers
             donarService.UpdateUser(user);
 
 		}
+		[HttpGet]
+		[Route("GetUserById/{id}")]
+		public List<CharityUser> GetUserById(int id)
+		{
+		return donarService.GetUserById(id);
+		}
 
 
 		[HttpPost]
@@ -49,7 +55,7 @@ namespace Charity.API.Controllers
 
             donarService.PayForCharity(userId, charityId, payment );
 
-            CharityUser user =	usersService.GetUserById(userId);
+			CharityUser user = usersService.GetUserById(userId);
 			Charitys charity = charityService.GetCharityById(charityId);
 
 

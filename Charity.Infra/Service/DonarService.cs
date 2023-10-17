@@ -14,7 +14,11 @@ namespace Charity.Infra.Service
 		{
 			this.donarRepository = donarRepository;
 		}
-		public void UpdateUser(CharityUser user)
+        public List<CharityUser> GetUserById(int id)
+        {
+            return donarRepository.GetUserById(id);
+        }
+        public void UpdateUser(CharityUser user)
 		{
             donarRepository.UpdateUser(user);
 		}

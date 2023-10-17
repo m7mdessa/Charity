@@ -6,7 +6,9 @@ namespace Charity.Core.Repository
 {
 	public interface IDonarRepository
     {
-		public void UpdateUser(CharityUser user);
+        public List<CharityUser> GetUserById(int id);
+
+        public void UpdateUser(CharityUser user);
 		public void PayForCharity(int userId, int charityId, Payment payment);
 		public void DonateForCharity(int userId, int charityId, Payment payment);
 		public List<Donations> GetDonationByUserId(int userId);

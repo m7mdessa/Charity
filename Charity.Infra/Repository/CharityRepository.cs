@@ -20,12 +20,13 @@ namespace Charity.Infra.Repository
 		{
 			var p = new DynamicParameters();
 			p.Add("c_name", charity.Charityname, dbType: DbType.String, direction: ParameterDirection.Input);
-			p.Add("c_latitude", charity.Latitude, dbType: DbType.Int32, direction: ParameterDirection.Input);
-			p.Add("c_longitude", charity.Longitude, dbType: DbType.Int32, direction: ParameterDirection.Input);
+			p.Add("c_latitude", charity.Latitude, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+			p.Add("c_longitude", charity.Longitude, dbType: DbType.Decimal, direction: ParameterDirection.Input);
 			p.Add("c_mission", charity.Mission, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("c_address", charity.Address, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("cat_id", charity.Categoryid, dbType: DbType.Int32, direction: ParameterDirection.Input);
-			p.Add("c_image", charity.Image, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("u_id", charity.Userid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("c_image", charity.Image, dbType: DbType.String, direction: ParameterDirection.Input);
 			p.Add("c_g_price", charity.Goalprice, dbType: DbType.Decimal, direction: ParameterDirection.Input);
 			p.Add("c_m_price", charity.Minprice, dbType: DbType.Decimal, direction: ParameterDirection.Input);
 			DbContext.Connection.Execute("Charity_Package.CreateCharity", p, commandType: CommandType.StoredProcedure);

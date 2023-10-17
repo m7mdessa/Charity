@@ -16,7 +16,17 @@ namespace Charity.Infra.Repository
 		{
 			DbContext = dBContext;
 		}
-		public void UpdateUser(CharityUser user)
+
+        public List<CharityUser> GetUserById(int id)
+        {
+            var p = new DynamicParameters();
+            p.Add("u_id", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+
+            IEnumerable<CharityUser> result = DbContext.Connection.Query<CharityUser>("Donar_Package.GetUserById", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
+        public void UpdateUser(CharityUser user)
 		{
 			var p = new DynamicParameters();
 			p.Add("u_id", user.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
