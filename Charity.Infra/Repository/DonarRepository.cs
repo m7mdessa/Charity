@@ -31,8 +31,9 @@ namespace Charity.Infra.Repository
 			var p = new DynamicParameters();
 			p.Add("u_id", user.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
 			p.Add("pass", user.Password, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("u_image", user.Image, dbType: DbType.String, direction: ParameterDirection.Input);
 
-			DbContext.Connection.Execute("Donar_Package.UpdateUser", p, commandType: CommandType.StoredProcedure);
+            DbContext.Connection.Execute("Donar_Package.UpdateUser", p, commandType: CommandType.StoredProcedure);
 		}
 	
 		public void PayForCharity(int Userid, int Charityid, Payment payment )
