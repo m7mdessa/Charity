@@ -75,7 +75,16 @@ namespace Charity.Infra.Repository
 
 			DbContext.Connection.Execute("Charity_Package.UpdateCharity", p, commandType: CommandType.StoredProcedure);
 		}
-	}
+
+        public List<Charities> GetCharityByCategory(int categoryId)
+        {
+            var p = new DynamicParameters();
+            p.Add("c_id", categoryId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+
+            IEnumerable<Charities> result = DbContext.Connection.Query<Charities>("Charity_Package.GetCharityByCategory", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+    }
 
 }
 

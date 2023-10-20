@@ -22,9 +22,6 @@ namespace Charity.Infra.Service
 		{
 			charityRepository.DeleteCharity(id);
 		}
-
-	
-
 		public List<Charities> GetAllCharities()
 		{
 			return charityRepository.GetAllCharities();
@@ -38,11 +35,14 @@ namespace Charity.Infra.Service
 			return charityRepository.GetCharityById(id);
 		}
 
-		
-
 		public void UpdateCharity(Charities charity)
 		{
 			charityRepository.UpdateCharity(charity);
 		}
-	}
+
+        public List<Charities> GetCharityByCategory(int categoryId)
+        {
+            return charityRepository.GetCharityByCategory(categoryId);
+        }
+    }
 }

@@ -9,6 +9,7 @@ namespace Charity.Core.Service
 	{
 		List<Charities> GetAllCharities();
         public List<Charities> GetCharityByUserId(int userId);
+        public List<Charities> GetCharityByCategory(int categoryId);
 
         public void CreateCharity(Charitys charity);
 		public void UpdateCharity(Charities charity);

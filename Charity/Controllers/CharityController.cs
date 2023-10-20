@@ -1,6 +1,7 @@
 ﻿using Charity.Core.Data;
 using Charity.Core.DTO;
 using Charity.Core.Service;
+using Charity.Infra.Repository;
 using Charity.Infra.Service;
 using Microsoft.AspNetCore.Mvc;
 
@@ -41,6 +42,15 @@ namespace Charity.API.Controllers
 
             return charityService.GetCharityByUserId(userId);
         }
+
+        [HttpGet]
+        [Route("GetCharityByCategory/{categoryId}")]
+        public List<Charities> GetCharityByCategory(int categoryId)
+        {
+            return charityService.GetCharityByCategory(categoryId);
+        }
+
+
         [HttpPut]
         [Route("UpdateCharity")]
 

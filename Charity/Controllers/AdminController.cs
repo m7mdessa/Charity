@@ -34,7 +34,14 @@ namespace Charity.API.Controllers
 		
 		}
 
-		[HttpGet]
+        [HttpPut]
+        [Route("AcceptCharity")]
+        public void AcceptCharity(Charities charity)
+        {
+            adminService.AcceptCharity(charity);
+        }
+
+        [HttpGet]
 		[Route("NumberOfUsers")]
 		public int GetNumberOfUsers()
 		{

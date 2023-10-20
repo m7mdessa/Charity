@@ -104,6 +104,14 @@ namespace Charity.Infra.Repository
 			return result.ToList();
 		}
 
-	
-	}
+        public void AcceptCharity(Charities charity)
+        {
+            var p = new DynamicParameters();
+            p.Add("c_id", charity.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("c_status", charity.Status, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("c_price", charity.Price, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+
+            DbContext.Connection.Execute("Admin_Package.AcceptCharity", p, commandType: CommandType.StoredProcedure);
+        }
+    }
 }

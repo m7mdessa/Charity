@@ -22,7 +22,9 @@ namespace Charity.Core.Service
 
 		public List<CharityNotification> GetAllNotifications();
 		public List<Donations> GetAllDonations();
+        public void AcceptCharity(Charities charity);
 
 
-	}
+
+    }
 }

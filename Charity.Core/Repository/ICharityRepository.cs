@@ -7,6 +7,7 @@ namespace Charity.Core.Repository
 	{
 		List<Charities> GetAllCharities();
         public List<Charities> GetCharityByUserId(int userId);
+        public List<Charities> GetCharityByCategory(int categoryId);
 
         public void CreateCharity(Charitys charity);
 		void DeleteCharity(int id);

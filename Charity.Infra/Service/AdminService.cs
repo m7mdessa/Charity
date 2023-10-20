@@ -4,6 +4,7 @@ using Charity.Core.Data.DTO;
 using Charity.Core.DTO;
 using Charity.Core.Repository;
 using Charity.Core.Service;
+using Charity.Infra.Repository;
 
 namespace Charity.Infra.Service
 {
@@ -16,7 +17,12 @@ namespace Charity.Infra.Service
 			this.adminRepository = adminRepository;
 		}
 
-		public List<Benefits> benefits()
+        public void AcceptCharity(Charities charity)
+        {
+            adminRepository.AcceptCharity(charity);
+        }
+
+        public List<Benefits> benefits()
 		{
 			return adminRepository.benefits();
 		}
