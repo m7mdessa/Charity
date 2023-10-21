@@ -21,7 +21,7 @@ namespace Charity.Core.DTO
         public string? Address { get; set; }
 
         public DateTime? Startdate { get; set; }
-
+          
         public DateTime? Enddate { get; set; }
 
         public string? categoryname { get; set; }
