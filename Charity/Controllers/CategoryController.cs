@@ -54,8 +54,8 @@ namespace Charity.API.Controllers
 		{
 			var file = Request.Form.Files[0];
 			var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-			var fullPath = Path.Combine("C:\\Users\\ysym1\\Desktop\\tahaluf\\finalproject\\Charity.Angular\\src\\assets\\img", fileName);
-			using (var stream = new FileStream(fullPath, FileMode.Create))
+            var fullPath = Path.Combine("C:\\Users\\ysym1\\Desktop\\Charity-Frontend\\src\\assets\\img", fileName);
+            using (var stream = new FileStream(fullPath, FileMode.Create))
 			{
 				file.CopyTo(stream);
 			}

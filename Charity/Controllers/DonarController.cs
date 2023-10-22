@@ -196,11 +196,11 @@ namespace Charity.API.Controllers
 		}
 
 		[HttpPost]
-		[Route("DonateForCharity/{userId}/{charityId}/{totalPrice}")]
-		public void DonateForCharity(int userId, int charityId, Decimal totalPrice, Payment payment)
+		[Route("DonateForCharity/{userId}/{charityId}")]
+		public void DonateForCharity(int userId, int charityId, Payment payment)
 		{
 
-            donarService.DonateForCharity(userId, charityId, totalPrice, payment);
+            donarService.DonateForCharity(userId, charityId, payment);
 		}
 
 		[HttpGet]

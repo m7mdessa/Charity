@@ -27,9 +27,9 @@ namespace Charity.Infra.Service
 		{
             donarRepository.PayForCharity(userId, charityId, payment);
 		}
-		public void DonateForCharity(int userId, int charityId, Decimal totalPrice, Payment payment)
+		public void DonateForCharity(int userId, int charityId, Payment payment)
 		{
-            donarRepository.DonateForCharity(userId, charityId, totalPrice, payment);
+            donarRepository.DonateForCharity(userId, charityId, payment);
 		}
 
 		public List<Donations> GetDonationByUserId(int userId)

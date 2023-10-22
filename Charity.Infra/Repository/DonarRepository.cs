@@ -49,12 +49,12 @@ namespace Charity.Infra.Repository
 			DbContext.Connection.Execute("Donar_Package.PayForCharity", p, commandType: CommandType.StoredProcedure);  
 
 		}
-		public void DonateForCharity(int userId, int charityId, Decimal totalPrice, Payment payment)
+		public void DonateForCharity(int userId, int charityId, Payment payment)
 		{
 			var p = new DynamicParameters();
 			p.Add("u_id", userId, dbType: DbType.Int32, direction: ParameterDirection.Input);
 			p.Add("c_id", charityId, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("c_t_price", totalPrice, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("c_t_price", payment.Totalprice, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             p.Add("p_cardholdername", payment.Cardholdernumber, dbType: DbType.String, direction: ParameterDirection.Input);
 			p.Add("p_cardnumber", payment.Cardnumber, dbType: DbType.String, direction: ParameterDirection.Input);
 			p.Add("p_expirationdate", payment.Expirationdate, dbType: DbType.String, direction: ParameterDirection.Input);

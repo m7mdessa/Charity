@@ -15,6 +15,7 @@ namespace Charity.Core.DTO
 
 		public string? Cvv { get; set; }
         public decimal UserId { get; set; }
+        public decimal? Totalprice { get; set; }
 
 
     }
