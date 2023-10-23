@@ -41,7 +41,7 @@ namespace Charity.Controllers
         [HttpGet]
         [Route("GetPageByTitle/{title}")]
 
-        public CharityPage GetPageByTitle(string title)
+        public List<CharityPage> GetPageByTitle(string title)
         {
             return pageService.GetPageByTitle(title);
         }
@@ -59,7 +59,7 @@ namespace Charity.Controllers
         {
             var file = Request.Form.Files[0];
             var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-            var fullPath = Path.Combine("C:\\Users\\ysym1\\Desktop\\tahaluf\\finalproject\\Charity.Angular\\src\\assets\\img", fileName);
+            var fullPath = Path.Combine("C:\\Users\\ysym1\\Desktop\\Charity-Frontend\\src\\assets\\img", fileName);
             using (var stream = new FileStream(fullPath, FileMode.Create))
             {
                 file.CopyTo(stream);
@@ -75,7 +75,7 @@ namespace Charity.Controllers
         {
             var file = Request.Form.Files[0];
             var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-            var fullPath = Path.Combine("C:\\Users\\ysym1\\Desktop\\tahaluf\\finalproject\\Charity.Angular\\src\\assets\\img", fileName);
+            var fullPath = Path.Combine("C:\\Users\\ysym1\\Desktop\\Charity-Frontend\\src\\assets\\img", fileName);
             using (var stream = new FileStream(fullPath, FileMode.Create))
             {
                 file.CopyTo(stream);
@@ -91,7 +91,7 @@ namespace Charity.Controllers
         {
             var file = Request.Form.Files[0];
             var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-            var fullPath = Path.Combine("C:\\Users\\ysym1\\Desktop\\tahaluf\\finalproject\\Charity.Angular\\src\\assets\\img", fileName);
+            var fullPath = Path.Combine("C:\\Users\\ysym1\\Desktop\\Charity-Frontend\\src\\assets\\img", fileName);
             using (var stream = new FileStream(fullPath, FileMode.Create))
             {
                 file.CopyTo(stream);
@@ -107,7 +107,7 @@ namespace Charity.Controllers
         {
             var file = Request.Form.Files[0];
             var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-            var fullPath = Path.Combine("C:\\Users\\ysym1\\Desktop\\tahaluf\\finalproject\\Charity.Angular\\src\\assets\\img", fileName);
+            var fullPath = Path.Combine("C:\\Users\\ysym1\\Desktop\\Charity-Frontend\\src\\assets\\img", fileName);
             using (var stream = new FileStream(fullPath, FileMode.Create))
             {
                 file.CopyTo(stream);

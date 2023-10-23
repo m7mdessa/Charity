@@ -47,13 +47,13 @@ namespace Charity.Infra.Repository
             return result.ToList();
         }
 
-        public CharityPage GetPageByTitle(string title)
+        public List<CharityPage> GetPageByTitle(string title)
         {
             var p = new DynamicParameters();
-            p.Add("p_Title", title, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("p_Title", title, direction: ParameterDirection.Input);
 
             IEnumerable<CharityPage> result = DbContext.Connection.Query<CharityPage>("Pages_PACKAGE.GetPageByTitle", p, commandType: CommandType.StoredProcedure);
-            return result.FirstOrDefault();
+            return result.ToList();
         }
 
         public void UpdatePage(CharityPage Page)

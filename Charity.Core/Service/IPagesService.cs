@@ -12,7 +12,7 @@ namespace Charity.Core.Service
         List<CharityPage> GetAllPages();
         void CreatePage(CharityPage Page);
         void DeletePage(int id);
-        CharityPage GetPageByTitle(string title);
+        List<CharityPage> GetPageByTitle(string title);
         public void UpdatePage(CharityPage Page);
     }
 }

@@ -32,7 +32,7 @@ namespace Charity.Infra.Service
            return pageRepository.GetAllPages();
         }
 
-        public CharityPage GetPageByTitle(string title)
+        public List<CharityPage> GetPageByTitle(string title)
         {
            return pageRepository.GetPageByTitle(title);
         }
