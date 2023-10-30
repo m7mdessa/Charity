@@ -19,11 +19,28 @@ namespace Charity.Controllers
 
 
         [HttpPost]
-        public void CreatePage(CharityPage Page)
+        [Route("homePage")]
+
+        public void AddHomePage(CharityPage home)
         {
-            pageService.CreatePage(Page);
+            pageService.AddHomePage(home);
         }
 
+        [HttpPost]
+        [Route("aboutPage")]
+
+        public void AddAboutPage(CharityPage about)
+        {
+            pageService.AddAboutPage(about);
+        }
+
+        [HttpPost]
+        [Route("contactPage")]
+
+        public void AddContactPage(CharityPage contact)
+        {
+            pageService.AddContactPage(contact);
+        }
         [HttpDelete]
         [Route("Delete/{id}")]
         public void DeletePage(int id)
@@ -48,11 +65,30 @@ namespace Charity.Controllers
 
 
         [HttpPut]
-        public void UpdatePage(CharityPage Page)
+        [Route("homePage")]
+
+        public void UpdateHomePage(CharityPage home)
         {
-            pageService.UpdatePage(Page);
+            pageService.UpdateHomePage(home);
         }
 
+        [HttpPut]
+        [Route("aboutPage")]
+
+        public void UpdateAboutPage(CharityPage about)
+        {
+            pageService.UpdateAboutPage(about);
+        }
+
+
+        [HttpPut]
+        [Route("contactPage")]
+
+        public void UpdateContactPage(CharityPage contact)
+        {
+            pageService.UpdateContactPage(contact);
+        }
+       
         [HttpPost]
         [Route("Slide1")]
         public CharityPage Slide1()

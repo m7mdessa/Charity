@@ -68,6 +68,7 @@ namespace Charity.API.Controllers
         {
             return adminService.MaxCharityCategory();
         }
+
 		[HttpPost]
 		[Route("SerchBetweenDates/{dateFrom},{dateTo}")]
         public List<Charitys> SerchBetweenDates(DateTime DateFrom, DateTime DateTo)
@@ -91,6 +92,7 @@ namespace Charity.API.Controllers
 		{
 			return adminService.GetAllNotifications();
 		}
+
 		[HttpGet]
 		[Route("GetAllDonations")]
 		public List<Donations> GetAllDonations()

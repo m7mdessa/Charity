@@ -10,9 +10,13 @@ namespace Charity.Core.Service
     public interface IPagesService
     {
         List<CharityPage> GetAllPages();
-        void CreatePage(CharityPage Page);
-        void DeletePage(int id);
+        public void AddHomePage(CharityPage home);
+        public void UpdateHomePage(CharityPage home);
+        public void AddAboutPage(CharityPage about);
+        public void UpdateAboutPage(CharityPage about);
+        public void AddContactPage(CharityPage contact);
+        public void UpdateContactPage(CharityPage contact); void DeletePage(int id);
         List<CharityPage> GetPageByTitle(string title);
-        public void UpdatePage(CharityPage Page);
+
     }
 }

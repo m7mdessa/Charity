@@ -7,7 +7,6 @@ namespace Charity.Core.DTO
 
 		public string? Email { get; set; }
 		public string? verificationCode { get; set; }
-		public DateTime? expirationTime { get; set; }
 
 
 	}

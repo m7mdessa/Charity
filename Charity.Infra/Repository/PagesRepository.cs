@@ -18,22 +18,86 @@ namespace Charity.Infra.Repository
         {
             DbContext = dBContext;
         }
-        public void CreatePage(CharityPage Page)
+
+
+        public void AddHomePage(CharityPage home)
         {
             var p = new DynamicParameters();
-            p.Add("p_title", Page.Title, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("p_slide1", Page.Slide1, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("p_slide2", Page.Slide2, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("p_slide3", Page.Slide3, dbType: DbType.String, direction: ParameterDirection.Input); 
-            p.Add("p_content", Page.Content, dbType: DbType.String, direction: ParameterDirection.Input); 
-            p.Add("p_logo", Page.Logo, dbType: DbType.String, direction: ParameterDirection.Input); 
-            p.Add("p_Email", Page.Email, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("p_Phone", Page.Phone, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("p_Location", Page.Location, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_title", home.Title, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_slide1", home.Slide1, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_slide2", home.Slide2, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_slide3", home.Slide3, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_content", home.Content, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_logo", home.Logo, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_Email", home.Email, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_Phone", home.Phone, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_Location", home.Location, dbType: DbType.String, direction: ParameterDirection.Input);
 
-            DbContext.Connection.Execute("Pages_PACKAGE.CreatePage", p, commandType: CommandType.StoredProcedure);
+            DbContext.Connection.Execute("Pages_PACKAGE.AddHomePage", p, commandType: CommandType.StoredProcedure);
         }
 
+        public void AddAboutPage(CharityPage about)
+        {
+            var p = new DynamicParameters();
+            p.Add("p_title", about.Title, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_slide1", about.Slide1, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_content", about.Content, dbType: DbType.String, direction: ParameterDirection.Input);
+            
+            DbContext.Connection.Execute("Pages_PACKAGE.AddAboutPage", p, commandType: CommandType.StoredProcedure);
+        }
+
+        public void AddContactPage(CharityPage contact)
+        {
+            var p = new DynamicParameters();
+
+            p.Add("p_title", contact.Title, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_Email", contact.Email, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_Phone", contact.Phone, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_Location", contact.Location, dbType: DbType.String, direction: ParameterDirection.Input);
+
+            DbContext.Connection.Execute("Pages_PACKAGE.AddContactPage", p, commandType: CommandType.StoredProcedure);
+
+        }
+
+        public void UpdateHomePage(CharityPage home)
+        {
+            var p = new DynamicParameters();
+            p.Add("p_id", home.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("p_title", home.Title, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_slide1", home.Slide1, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_slide2", home.Slide2, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_slide3", home.Slide3, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_content", home.Content, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_logo", home.Logo, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_Email", home.Email, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_Phone", home.Phone, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_Location", home.Location, dbType: DbType.String, direction: ParameterDirection.Input);
+
+            DbContext.Connection.Execute("Pages_PACKAGE.UpdateHomePage", p, commandType: CommandType.StoredProcedure);
+        }
+
+        public void UpdateAboutPage(CharityPage about)
+        {
+            var p = new DynamicParameters();
+            p.Add("p_id", about.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("p_title", about.Title, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_slide1", about.Slide1, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_content", about.Content, dbType: DbType.String, direction: ParameterDirection.Input);
+
+            DbContext.Connection.Execute("Pages_PACKAGE.UpdateAboutPage", p, commandType: CommandType.StoredProcedure);
+        }
+
+        public void UpdateContactPage(CharityPage contact)
+        {
+            var p = new DynamicParameters();
+            p.Add("p_id", contact.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("p_title", contact.Title, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_Email", contact.Email, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_Phone", contact.Phone, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_Location", contact.Location, dbType: DbType.String, direction: ParameterDirection.Input);
+            DbContext.Connection.Execute("Pages_PACKAGE.UpdateContactPage", p, commandType: CommandType.StoredProcedure);
+
+        }
         public void DeletePage(int id)
         {
             var p = new DynamicParameters();
@@ -56,21 +120,9 @@ namespace Charity.Infra.Repository
             return result.ToList();
         }
 
-        public void UpdatePage(CharityPage Page)
-        {
-            var p = new DynamicParameters();
-            p.Add("p_id", Page.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("p_title", Page.Title, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("p_slide1", Page.Slide1, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("p_slide2", Page.Slide2, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("p_slide3", Page.Slide3, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("p_content", Page.Content, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("p_logo", Page.Logo, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("p_Email", Page.Email, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("p_Phone", Page.Phone, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("p_Location", Page.Location, dbType: DbType.String, direction: ParameterDirection.Input);
+        
+       
 
-            DbContext.Connection.Execute("Pages_PACKAGE.UpdatePage", p, commandType: CommandType.StoredProcedure);
-        }
+      
     }
 }

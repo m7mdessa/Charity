@@ -54,41 +54,6 @@ namespace Charity.Infra.Service
                 return tokenString;
             }
         }
-        //              public string Login(Login login)
-        //{
-        //	var result = authRepository.Login(login);
-
-        //	if (result == null)
-        //	{
-        //		return null;
-        //	}
-        //	else
-        //	{
-        //		// Generate a 256-bit key for HMAC SHA-256
-        //		byte[] keyBytes = new byte[32]; // 256 bits
-        //		using (var rng = new RNGCryptoServiceProvider())
-        //		{
-        //			rng.GetBytes(keyBytes);
-        //		}
-
-        //		var secretKey = new SymmetricSecurityKey(keyBytes);
-        //		var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-        //		var claims = new List<Claim>
-        //{
-        //	new Claim("Name", result.Username),
-        //	new Claim("Role", result.Roleid.ToString()),
-        //	new Claim("UserId", result.id.ToString())
-        //};
-        //		var tokenOptions = new JwtSecurityToken(
-        //			claims: claims,
-        //			expires: DateTime.Now.AddHours(24),
-        //			signingCredentials: signinCredentials
-        //		);
-
-        //		var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
-        //		return tokenString;
-        //	}
-        //}
 
         public void Register(Register register)
 		{

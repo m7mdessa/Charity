@@ -23,15 +23,12 @@ namespace Charity.Infra.Repository
 		{
 
 			email.verificationCode = GenerateVerificationCode();
-			email.expirationTime = DateTime.Now.AddMinutes(3);
 
 			var p = new DynamicParameters();
 			p.Add("u_email", email.Email, dbType: DbType.String, direction: ParameterDirection.Input);
 			p.Add("v_verification_code",  email.verificationCode, DbType.String, ParameterDirection.Input);
-			p.Add("v_expiration_time", email.expirationTime, DbType.DateTime, ParameterDirection.Input);
 
 			DbContext.Connection.Execute("Auth_Package.Forgotpassword", p, commandType: CommandType.StoredProcedure);
-			var resetLink = $"http://localhost:4200/auth/ResetPassword";
 
 			var emailSubject = "Password Reset";
 			var emailBody = $@"<html>
@@ -71,26 +68,16 @@ namespace Charity.Infra.Repository
 <body>
     <div class='details'>
         <p class=""header"">Password Reset Request</p>
-        <p>You have requested to reset your password. Please use the verification code and reset link below to reset your password:</p>
+        <p>You have requested to reset your password. Please use the verification code:</p>
         <p class=""details"">Verification Code: <strong>{email.verificationCode}</strong></p>
-        <p class=""details"">Reset Link: <a href='{resetLink}'>{resetLink}</a></p>
         <p>If you did not request this password reset, please ignore this email.</p>
         <p class=""footer"">Thank you!</p>
-        <p class=""footer"">The verification code will expire in: {GetTimeRemaining(email.expirationTime)}</p>
     </div>
 </body>
 </html>
 ";
 
 			_ = emailService.SendEmailAsync(email.Email, emailSubject, emailBody);
-		}
-
-		private string GetTimeRemaining(DateTime? expirationTime)
-		{
-				TimeSpan timeRemaining = expirationTime.Value - DateTime.Now;
-				int minutesRemaining = (int)timeRemaining.TotalMinutes;
-				return $"{minutesRemaining} minute{(minutesRemaining != 1 ? "s" : "")}";
-		
 		}
 
 

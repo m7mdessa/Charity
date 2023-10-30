@@ -17,9 +17,20 @@ namespace Charity.Infra.Service
         {
             this.pageRepository = pageRepository;
         }
-        public void CreatePage(CharityPage Page)
+
+        public void AddAboutPage(CharityPage about)
         {
-            pageRepository.CreatePage(Page);
+            pageRepository.AddAboutPage(about);
+        }
+
+        public void AddContactPage(CharityPage contact)
+        {
+            pageRepository.AddContactPage(contact);
+        }
+
+        public void AddHomePage(CharityPage home)
+        {
+            pageRepository.AddHomePage(home);
         }
 
         public void DeletePage(int id)
@@ -37,9 +48,21 @@ namespace Charity.Infra.Service
            return pageRepository.GetPageByTitle(title);
         }
 
-        public void UpdatePage(CharityPage Page)
+        public void UpdateAboutPage(CharityPage about)
         {
-            pageRepository.UpdatePage(Page);
+            pageRepository.UpdateAboutPage(about);
         }
+
+        public void UpdateContactPage(CharityPage contact)
+        {
+            pageRepository.UpdateContactPage(contact);
+        }
+
+        public void UpdateHomePage(CharityPage home)
+        {
+            pageRepository.UpdateHomePage(home);
+        }
+
+       
     }
 }
